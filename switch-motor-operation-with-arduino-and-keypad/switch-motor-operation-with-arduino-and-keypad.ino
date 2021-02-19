@@ -3,22 +3,29 @@
 
 #include "Waves.h"
 
-const int out1 = 9;
+const int in1 = 9;
 
-const byte ROWS = 4;
-const byte COLS = 3;
 
-char hexaKeys[ROWS][COLS] = {
-  {'1', '2', '3'},
-  {'4', '5', '6'},
-  {'7', '8', '9'},
-  {'*', '0', '#'}
-};
+Keypad initKeypad(
+  byte rowPin0, byte rowPin1, byte rowPin2, byte rowPin3,
+  byte colPin0, byte colPin1, byte colPin2) {
+  const byte ROWS = 4;
+  const byte COLS = 3;
 
-byte rowPins[ROWS] = {8, 7, 6, 5};
-byte colPins[COLS] = {4, 3, 2};
+  char hexaKeys[ROWS][COLS] = {
+    {'1', '2', '3'},
+    {'4', '5', '6'},
+    {'7', '8', '9'},
+    {'*', '0', '#'}
+  };
 
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+  byte rowPins[ROWS] = {rowPin0, rowPin1, rowPin2, rowPin3};
+  byte colPins[COLS] = {colPin0, colPin1, colPin2};
+
+  return Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+}
+
+Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
 
 /*
  * Current millisecond in Interval
@@ -30,11 +37,38 @@ int current(int interval) {
 
 
 void setup() {
-  // put your setup code here, to run once:
-
+  pinMode(in1, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  switch (customKeypad.getKey()) 
+  {
+    case '0':
+      break;
+
+    case '1':
+      break;
+
+    case '2':
+      break;
+
+    case '3':
+      break;
+
+    case '4':
+      break;
+
+    case '5':
+      break;
+
+    case '6':
+      break;
+
+    case '7':
+      break;
+
+    default:
+      break;
+  }
 
 }
