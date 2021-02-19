@@ -6,6 +6,12 @@
 const int in1 = 9;
 
 
+/*
+ * Initialize keypad.
+ * rowPin0~3: Arduino I/O pin number
+ * colPin0~2: Arduino I/O pin number
+ * Return: keypad instanse.
+ */
 Keypad initKeypad(
   byte rowPin0, byte rowPin1, byte rowPin2, byte rowPin3,
   byte colPin0, byte colPin1, byte colPin2) {
@@ -27,21 +33,37 @@ Keypad initKeypad(
 
 
 /*
- * Current millisecond in Interval
- * interval: millisecond
+ * Get current millisecond in waveLength.
+ * waveLength: millisecond
+ * Return: Current millisecond in waveLength.
  */
-int current(int interval) {
-  return millis() % interval;
+int current(int waveLength) {
+  return millis() % waveLength;
 }
 
+/*
+ * Waveform output to motor
+ */
 
-void move0() {}
+void move0() {
+  analogWrite(in1, 255);
+}
 
-void move1() {}
+void move1() {
+  analogWrite(in1, triangleWave(0, 255, 3000, current(3000)));
+}
 
 void move2() {}
 
 void move3() {}
+
+void move4() {}
+
+void move5() {}
+
+void move6() {}
+
+void move7() {}
 
 
 void setup() {
@@ -50,38 +72,21 @@ void setup() {
 
 void loop() {
   static Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
-  static void (* moveFunc[])() = {move0, move1, move2, move3};
+  static void (* moveFunc[])() = {move0, move1, move2, move3, move4, move5, move6, move7};
   static int move = 0;
 
   char key = customKeypad.getKey();
   switch (key) 
   {
     case '0':
-      move = 0;
-      break;
-
     case '1':
-      move = 1;
-      break;
-
     case '2':
-      move = 2;
-      break;
-
     case '3':
-      move = 3;
-      break;
-
     case '4':
-      break;
-
     case '5':
-      break;
-
     case '6':
-      break;
-
     case '7':
+      move = key - '0';
       break;
 
     default:
