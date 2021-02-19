@@ -25,7 +25,6 @@ Keypad initKeypad(
   return Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 }
 
-Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
 
 /*
  * Current millisecond in Interval
@@ -36,23 +35,41 @@ int current(int interval) {
 }
 
 
+void move0() {}
+
+void move1() {}
+
+void move2() {}
+
+void move3() {}
+
+
 void setup() {
   pinMode(in1, OUTPUT);
 }
 
 void loop() {
-  switch (customKeypad.getKey()) 
+  static Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
+  static void (* moveFunc[])() = {move0, move1, move2, move3};
+  static int move = 0;
+
+  char key = customKeypad.getKey();
+  switch (key) 
   {
     case '0':
+      move = 0;
       break;
 
     case '1':
+      move = 1;
       break;
 
     case '2':
+      move = 2;
       break;
 
     case '3':
+      move = 3;
       break;
 
     case '4':
@@ -71,4 +88,5 @@ void loop() {
       break;
   }
 
+  (* moveFunc[move])();
 }
