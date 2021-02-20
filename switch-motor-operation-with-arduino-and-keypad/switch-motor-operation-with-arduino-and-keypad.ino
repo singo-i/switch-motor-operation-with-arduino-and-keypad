@@ -3,7 +3,8 @@
 
 #include "Waves.h"
 
-const int in1 = 9;  // Pin number for output to L298N 'IN1'
+const int in1 = 10;  // Pin number for output to L298N 'IN1'
+const int in2 = 9;   // Pin number for output to L298N 'IN1'
 
 const byte ROWS = 4;
 const byte COLS = 3;
@@ -15,8 +16,8 @@ char hexaKeys[ROWS][COLS] = {
   {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {8, 7, 6, 5};
-byte colPins[COLS] = {4, 3, 2};
+byte rowPins[ROWS] = {8, 7, 6, 5};  // Pin numbers for keypad
+byte colPins[COLS] = {4, 3, 2};     // Pin numbers for keypad
 
 
 /*
@@ -40,7 +41,7 @@ void analogWriteIn1(int val) {
  */
 
 void wave0() {
-  analogWriteIn1(255);
+  analogWriteIn1(0);
 }
 
 void wave1() {
@@ -62,6 +63,7 @@ void wave7() {}
 
 void setup() {
   pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
 }
 
 void loop() {
