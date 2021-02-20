@@ -5,31 +5,18 @@
 
 const int in1 = 9;  // Pin number for output to L298N 'IN1'
 
+const byte ROWS = 4;
+const byte COLS = 3;
 
-/*
- * Initialize keypad.
- * rowPin0~3: Arduino I/O pin number
- * colPin0~2: Arduino I/O pin number
- * Return: keypad instanse.
- */
-Keypad initKeypad(
-  byte rowPin0, byte rowPin1, byte rowPin2, byte rowPin3,
-  byte colPin0, byte colPin1, byte colPin2) {
-  const byte ROWS = 4;
-  const byte COLS = 3;
+char hexaKeys[ROWS][COLS] = {
+  {'1', '2', '3'},
+  {'4', '5', '6'},
+  {'7', '8', '9'},
+  {'*', '0', '#'}
+};
 
-  char hexaKeys[ROWS][COLS] = {
-    {'1', '2', '3'},
-    {'4', '5', '6'},
-    {'7', '8', '9'},
-    {'*', '0', '#'}
-  };
-
-  byte rowPins[ROWS] = {rowPin0, rowPin1, rowPin2, rowPin3};
-  byte colPins[COLS] = {colPin0, colPin1, colPin2};
-
-  return Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
-}
+byte rowPins[ROWS] = {8, 7, 6, 5};
+byte colPins[COLS] = {4, 3, 2};
 
 
 /*
@@ -78,7 +65,7 @@ void setup() {
 }
 
 void loop() {
-  static Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
+  static Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
   static void (* waveFunc[])() = {wave0, wave1, wave2, wave3, wave4, wave5, wave6, wave7};
   static int wave = 0;
 
