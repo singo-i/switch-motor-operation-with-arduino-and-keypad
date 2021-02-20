@@ -3,7 +3,7 @@
 
 #include "Waves.h"
 
-const int in1 = 9;
+const int in1 = 9;  // Pin number for output to L298N 'IN1'
 
 
 /*
@@ -42,28 +42,35 @@ int current(int waveLength) {
 }
 
 /*
+ * Call analogWrite(in1, val)
+ */
+void analogWriteIn1(int val) {
+  analogWrite(in1, val);
+}
+
+/*
  * Waveform output to motor
  */
 
-void move0() {
-  analogWrite(in1, 255);
+void wave0() {
+  analogWriteIn1(255);
 }
 
-void move1() {
-  analogWrite(in1, triangleWave(0, 255, 3000, current(3000)));
+void wave1() {
+  analogWriteIn1(triangleWave(0, 255, 3000, current(3000)));
 }
 
-void move2() {}
+void wave2() {}
 
-void move3() {}
+void wave3() {}
 
-void move4() {}
+void wave4() {}
 
-void move5() {}
+void wave5() {}
 
-void move6() {}
+void wave6() {}
 
-void move7() {}
+void wave7() {}
 
 
 void setup() {
@@ -72,8 +79,8 @@ void setup() {
 
 void loop() {
   static Keypad customKeypad = initKeypad(8, 7, 6, 5, 4, 3, 2);
-  static void (* moveFunc[])() = {move0, move1, move2, move3, move4, move5, move6, move7};
-  static int move = 0;
+  static void (* waveFunc[])() = {wave0, wave1, wave2, wave3, wave4, wave5, wave6, wave7};
+  static int wave = 0;
 
   char key = customKeypad.getKey();
   switch (key) 
@@ -86,12 +93,12 @@ void loop() {
     case '5':
     case '6':
     case '7':
-      move = key - '0';
+      wave = key - '0';
       break;
 
     default:
       break;
   }
 
-  (* moveFunc[move])();
+  (* waveFunc[wave])();
 }
