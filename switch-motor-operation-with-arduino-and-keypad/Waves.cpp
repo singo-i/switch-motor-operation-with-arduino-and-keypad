@@ -2,8 +2,7 @@
  * 波形を出力
  */
 
-#include <Arduino.h>
-#include <math.h>  // for M_PI
+#include "Waves.h"
 
 /*
  * 三角波
@@ -42,16 +41,12 @@ int squareWave(int min_, int max_, int waveLength, int current) {
 }
 
 /*
- * 正弦波の変位を返す
- * A: 振幅
- * T: 波長
- * t: 時間
- * Returns: 変位（A～-A）
+ * 正弦波
  */
-double sineWave(int A, int T, int t) {
-  return A * sin(2 * M_PI / T * t);
+int sineWave(int min_, int max_, int waveLength, int current) {
+  return map(sin(2 * M_PI / waveLength * current), -1, 1, min_, max_);
 }
 
-int cosineWave() {}
-
-int tangentWave() {}
+int cosineWave(int min_, int max_, int waveLength, int current) {
+  return map(cos(2 * M_PI / waveLength * current), -1, 1, min_, max_);
+}
