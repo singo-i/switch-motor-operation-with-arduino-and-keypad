@@ -44,9 +44,11 @@ int squareWave(int min_, int max_, int waveLength, int current) {
  * 正弦波
  */
 int sineWave(int min_, int max_, int waveLength, int current) {
-  return map(sin(2 * M_PI / waveLength * current), -1, 1, min_, max_);
+  double wave = sin(2 * M_PI / waveLength * current);
+  return int(map(long(wave * 1000), -1000, 1000, min_, max_));
 }
 
 int cosineWave(int min_, int max_, int waveLength, int current) {
-  return map(cos(2 * M_PI / waveLength * current), -1, 1, min_, max_);
+  double wave = cos(2 * M_PI / waveLength * current);
+  return int(map(long(wave * 1000), -1000, 1000, min_, max_));
 }
