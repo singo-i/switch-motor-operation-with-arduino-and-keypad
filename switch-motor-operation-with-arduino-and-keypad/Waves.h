@@ -1,3 +1,7 @@
+/**
+ * @file 
+ * @brief Output a waveform
+ */
 #ifndef _WAVES_h
 #define _WAVES_h
 
