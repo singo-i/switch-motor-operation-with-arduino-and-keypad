@@ -30,42 +30,35 @@ int current(int waveLength) {
 }
 
 /*
- * Call analogWrite(in1, val)
- */
-void analogWriteIn1(int val) {
-  analogWrite(in1, val);
-}
-
-/*
  * Waveform output to motor
  */
 
-int wave0() {
+long wave0() {
   return 0;
 }
 
-int wave1() {
+long wave1() {
   return triangleWave(0, 255, 3000, current(3000));
 }
 
-int wave2() {
+long wave2() {
   return sawtoothWave(0, 255, 1500, current(1500));
 }
 
-int wave3() {
+long wave3() {
   return negativeSawtoothWave(0, 255, 1500, current(1500));
 }
 
-int wave4() {
+long wave4() {
   return squareWave(0, 255, 2000, current(2000));
 }
 
-int wave5() {
-  return sineWave(0, 255, 3000, current(3000));
+long wave5() {
+  return sineWave(0, 255, 5000, current(5000));
 }
 
-int wave6() {
-  return cosineWave(0, 255, 3000, current(3000));
+long wave6() {
+  return cosineWave(0, 255, 5000, current(5000));
 }
 
 
@@ -75,11 +68,11 @@ void setup() {
 }
 
 void loop() {
-  static Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
-  static int (* waveFunc[])() = {wave0, wave1, wave2, wave3, wave4, wave5, wave6};
+  static Keypad keypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+  static long (* waveFunc[])() = {wave0, wave1, wave2, wave3, wave4, wave5, wave6};
   static int wave = 0;
 
-  char key = customKeypad.getKey();
+  char key = keypad.getKey();
   switch (key) 
   {
     case '0':
@@ -91,10 +84,7 @@ void loop() {
     case '6':
       wave = key - '0';
       break;
-
-    default:
-      break;
   }
 
-  analogWriteIn1((* waveFunc[wave])());
+  analogWrite(in1, int((* waveFunc[wave])()));
 }

@@ -4,11 +4,11 @@
 #include <Arduino.h>
 #include <math.h>  // for M_PI
 
-int triangleWave(int, int, int, int);
-int sawtoothWave(int, int, int, int);
-int negativeSawtoothWave(int, int, int, int);
-int squareWave(int, int, int, int);
-int sineWave(int, int, int, int);
-int cosineWave(int, int, int, int);
+long triangleWave(long, long, long, long);
+long sawtoothWave(long, long, long, long);
+long negativeSawtoothWave(long, long, long, long);
+long squareWave(long, long, long, long);
+long sineWave(long, long, long, long);
+long cosineWave(long, long, long, long);
 
 #endif

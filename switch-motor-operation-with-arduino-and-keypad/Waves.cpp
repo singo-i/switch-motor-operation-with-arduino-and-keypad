@@ -7,7 +7,7 @@
 /*
  * 三角波
  */
-int triangleWave(int min_, int max_, int waveLength, int current) {
+long triangleWave(long min_, long max_, long waveLength, long current) {
   if (current * 2 < waveLength) {
     return map(current, 0, waveLength / 2, min_, max_);
   } else {
@@ -18,21 +18,21 @@ int triangleWave(int min_, int max_, int waveLength, int current) {
 /*
  * のこぎり波
  */
-int sawtoothWave(int min_, int max_, int waveLength, int current) {
+long sawtoothWave(long min_, long max_, long waveLength, long current) {
   return map(current, 0, waveLength, min_, max_);
 }
 
 /*
  * 逆のこぎり波
  */
-int negativeSawtoothWave(int min_, int max_, int waveLength, int current) {
+long negativeSawtoothWave(long min_, long max_, long waveLength, long current) {
   return map(current, 0, waveLength, max_, min_);
 }
 
 /*
  * 矩形波
  */
-int squareWave(int min_, int max_, int waveLength, int current) {
+long squareWave(long min_, long max_, long waveLength, long current) {
   if (current * 2 < waveLength) {
     return max_;
   } else {
@@ -43,12 +43,12 @@ int squareWave(int min_, int max_, int waveLength, int current) {
 /*
  * 正弦波
  */
-int sineWave(int min_, int max_, int waveLength, int current) {
+long sineWave(long min_, long max_, long waveLength, long current) {
   double wave = sin(2 * M_PI / waveLength * current);
-  return int(map(long(wave * 1000), -1000, 1000, min_, max_));
+  return map(long(wave) * 1000, -1000, 1000, min_, max_);
 }
 
-int cosineWave(int min_, int max_, int waveLength, int current) {
+long cosineWave(long min_, long max_, long waveLength, long current) {
   double wave = cos(2 * M_PI / waveLength * current);
-  return int(map(long(wave * 1000), -1000, 1000, min_, max_));
+  return map(long(wave) * 1000, -1000, 1000, min_, max_);
 }
