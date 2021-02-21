@@ -25,7 +25,7 @@ byte colPins[COLS] = {4, 3, 2};     // Pin numbers for keypad
  * waveLength: millisecond
  * Return: Current millisecond in waveLength.
  */
-int current(int waveLength) {
+long current(long waveLength) {
   return millis() % waveLength;
 }
 
