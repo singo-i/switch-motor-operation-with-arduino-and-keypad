@@ -45,10 +45,10 @@ long squareWave(long min_, long max_, long waveLength, long current) {
  */
 long sineWave(long min_, long max_, long waveLength, long current) {
   double wave = sin(2 * M_PI / waveLength * current);
-  return map(long(wave) * 1000, -1000, 1000, min_, max_);
+  return map(long(wave * 1000), -1000, 1000, min_, max_);
 }
 
 long cosineWave(long min_, long max_, long waveLength, long current) {
   double wave = cos(2 * M_PI / waveLength * current);
-  return map(long(wave) * 1000, -1000, 1000, min_, max_);
+  return map(long(wave * 1000), -1000, 1000, min_, max_);
 }
