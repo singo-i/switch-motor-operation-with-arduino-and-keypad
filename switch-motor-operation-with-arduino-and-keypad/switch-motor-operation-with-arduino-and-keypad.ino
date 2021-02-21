@@ -1,10 +1,14 @@
+/**
+ * @file 
+ * @brief An example of using the Arduino Keypad to switch the output to various patterns.
+ */
 #include <Key.h>
 #include <Keypad.h>
 
 #include "Waves.h"
 
-const int in1 = 10;  // Pin number for output to L298N 'IN1'
-const int in2 = 9;   // Pin number for output to L298N 'IN1'
+const byte in1 = 10;  // Pin number for output to L298N 'IN1'
+const byte in2 = 9;   // Pin number for output to L298N 'IN2'
 
 const byte ROWS = 4;
 const byte COLS = 3;
@@ -16,21 +20,21 @@ char hexaKeys[ROWS][COLS] = {
   {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {8, 7, 6, 5};  // Pin numbers for keypad
-byte colPins[COLS] = {4, 3, 2};     // Pin numbers for keypad
+byte rowPins[ROWS] = {8, 7, 6, 5};  // Pin numbers for input from keypad
+byte colPins[COLS] = {4, 3, 2};     // Pin numbers for input from keypad
 
 
-/*
- * Get current millisecond in waveLength.
- * waveLength: millisecond
- * Return: Current millisecond in waveLength.
+/**
+ * @brief Get current millisecond in waveLength.
+ * @param waveLength: millisecond
+ * @return Current millisecond in waveLength.
  */
 long current(long waveLength) {
   return millis() % waveLength;
 }
 
-/*
- * Waveform output to motor
+/**
+ * Waveforms output to motor
  */
 
 long wave0() {

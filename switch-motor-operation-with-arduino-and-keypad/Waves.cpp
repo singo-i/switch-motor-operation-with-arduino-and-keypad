@@ -1,11 +1,17 @@
-/*
- * 波形を出力
+/**
+ * @file 
+ * @brief Output a waveform
  */
 
 #include "Waves.h"
 
-/*
- * 三角波
+/**
+ * @brief Output triangler wave form
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
  */
 long triangleWave(long min_, long max_, long waveLength, long current) {
   if (current * 2 < waveLength) {
@@ -15,22 +21,37 @@ long triangleWave(long min_, long max_, long waveLength, long current) {
   }
 }
 
-/*
- * のこぎり波
+/**
+ * @brief Output the sawtooth wave form
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
  */
 long sawtoothWave(long min_, long max_, long waveLength, long current) {
   return map(current, 0, waveLength, min_, max_);
 }
 
-/*
- * 逆のこぎり波
+/**
+ * @brief Outputs the waveform of a reverse sawtooth wave
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
  */
 long negativeSawtoothWave(long min_, long max_, long waveLength, long current) {
   return map(current, 0, waveLength, max_, min_);
 }
 
-/*
- * 矩形波
+/**
+ * @brief Outputs a square wave form.
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
  */
 long squareWave(long min_, long max_, long waveLength, long current) {
   if (current * 2 < waveLength) {
@@ -40,14 +61,27 @@ long squareWave(long min_, long max_, long waveLength, long current) {
   }
 }
 
-/*
- * 正弦波
+/**
+ * @brief Outputs a sine wave form.
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
  */
 long sineWave(long min_, long max_, long waveLength, long current) {
   double wave = sin(2 * M_PI / waveLength * current);
   return map(long(wave * 1000), -1000, 1000, min_, max_);
 }
 
+/**
+ * @brief Outputs a cosine wave form.
+ * @param min_: Minimum output
+ * @param max_: Maximum output
+ * @param waveLength: WaveLength
+ * @param current: Current time in wavelength
+ * @return Output long integer from min_ to max_.
+ */
 long cosineWave(long min_, long max_, long waveLength, long current) {
   double wave = cos(2 * M_PI / waveLength * current);
   return map(long(wave * 1000), -1000, 1000, min_, max_);
