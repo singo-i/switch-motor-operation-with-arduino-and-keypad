@@ -10,6 +10,7 @@
 const byte in1 = 10;  // Pin number for output to Mini L298N 'IN1'
 const byte in2 = 9;   // Pin number for output to Mini L298N 'IN2'
 
+// Various keypad settings
 const byte ROWS = 4;
 const byte COLS = 3;
 
