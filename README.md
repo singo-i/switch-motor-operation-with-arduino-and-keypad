@@ -12,3 +12,8 @@ Pressing 0 to 6 on the keypad switches the output pattern of the motor.
 * 4*3 Membrane Switch Keypad
 * MB102 Breadboard Power Supply Module
 
+## Breadboard Diagram
+
+!(Breadboard Diagram)[https://cdn-ak.f.st-hatena.com/images/fotolife/i/isinsin/20210220/20210220232526.png]
+
+
