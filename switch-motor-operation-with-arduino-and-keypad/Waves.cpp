@@ -20,7 +20,7 @@
  * ++++++++++++++++++
  */
 long triangleWave(long min_, long max_, long waveLength, long current) {
-  if (current * 2 < waveLength) {
+  if (current < waveLength / 2) {
     return map(current, 0, waveLength / 2, min_, max_);
   } else {
     return map(current, waveLength / 2, waveLength, max_, min_);
@@ -78,7 +78,7 @@ long negativeSawtoothWave(long min_, long max_, long waveLength, long current) {
  * ++++++++++++++++++++
  */
 long squareWave(long min_, long max_, long waveLength, long current) {
-  if (current * 2 < waveLength) {
+  if (current < waveLength / 2) {
     return max_;
   } else {
     return min_;
