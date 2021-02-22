@@ -77,6 +77,7 @@ void loop() {
   static long (* waveFunc[])() = {wave0, wave1, wave2, wave3, wave4, wave5, wave6};
   static int wave = 0;
 
+  // Switch waveforms with input from the keypad
   char key = keypad.getKey();
   switch (key) 
   {
