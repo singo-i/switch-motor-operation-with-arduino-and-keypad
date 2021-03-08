@@ -93,5 +93,5 @@ void loop() {
   }
 
   // Output to motor
-  analogWrite(in1, int((* waveFunc[wave])()));
+  analogWrite(in1, (* waveFunc[wave])());
 }

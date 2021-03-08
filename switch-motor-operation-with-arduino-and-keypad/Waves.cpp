@@ -102,7 +102,7 @@ long squareWave(long min_, long max_, long waveLength, long current) {
 long sineWave(long min_, long max_, long waveLength, long current) {
   const double accuracy = pow(10, 9);
   const double wave = sin(2 * M_PI / waveLength * current);
-  return map(long(wave * accuracy), -accuracy, accuracy, min_, max_);
+  return map(wave * accuracy, -accuracy, accuracy, min_, max_);
 }
 
 /**
@@ -122,5 +122,5 @@ long sineWave(long min_, long max_, long waveLength, long current) {
 long cosineWave(long min_, long max_, long waveLength, long current) {
   const double accuracy = pow(10, 9);
   const double wave = cos(2 * M_PI / waveLength * current);
-  return map(long(wave * accuracy), -accuracy, accuracy, min_, max_);
+  return map(wave * accuracy, -accuracy, accuracy, min_, max_);
 }
