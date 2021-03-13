@@ -19,7 +19,7 @@
  *  +++++++  +++++++ 
  * ++++++++++++++++++
  */
-long triangleWave(long min_, long max_, long waveLength, long current) {
+long triangleWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   if (current < waveLength / 2) {
     return map(current, 0, waveLength / 2, min_, max_);
   } else {
@@ -41,7 +41,7 @@ long triangleWave(long min_, long max_, long waveLength, long current) {
  *  ++++ ++++ 
  * ++++++++++
  */
-long sawtoothWave(long min_, long max_, long waveLength, long current) {
+long sawtoothWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   return map(current, 0, waveLength, min_, max_);
 }
 
@@ -59,7 +59,7 @@ long sawtoothWave(long min_, long max_, long waveLength, long current) {
  * ++++ ++++ 
  * ++++++++++
  */
-long negativeSawtoothWave(long min_, long max_, long waveLength, long current) {
+long negativeSawtoothWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   return map(current, 0, waveLength, max_, min_);
 }
 
@@ -77,7 +77,7 @@ long negativeSawtoothWave(long min_, long max_, long waveLength, long current) {
  * +++++     +++++     
  * ++++++++++++++++++++
  */
-long squareWave(long min_, long max_, long waveLength, long current) {
+long squareWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   if (current < waveLength / 2) {
     return max_;
   } else {
@@ -99,7 +99,7 @@ long squareWave(long min_, long max_, long waveLength, long current) {
  *    ++++++++++++++++++      ++++++++++++++++++   
  * ++++++++++++++++++++++++++++++++++++++++++++++++
  */
-long sineWave(long min_, long max_, long waveLength, long current) {
+long sineWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   const long accuracy = max_ - min_;
   const double wave = sin(2 * M_PI / waveLength * current);
   return map(wave * accuracy, -accuracy, accuracy, min_, max_);
@@ -119,7 +119,7 @@ long sineWave(long min_, long max_, long waveLength, long current) {
  * +++++++++      ++++++++++++++++++      +++++++++
  * ++++++++++++++++++++++++++++++++++++++++++++++++
  */
-long cosineWave(long min_, long max_, long waveLength, long current) {
+long cosineWave(long min_, long max_, unsigned long waveLength, unsigned long current) {
   const long accuracy = max_ - min_;
   const double wave = cos(2 * M_PI / waveLength * current);
   return map(wave * accuracy, -accuracy, accuracy, min_, max_);

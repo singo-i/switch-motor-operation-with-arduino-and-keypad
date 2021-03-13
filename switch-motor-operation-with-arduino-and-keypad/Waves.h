@@ -8,11 +8,11 @@
 #include <Arduino.h>
 #include <math.h>  // for M_PI
 
-long triangleWave(long, long, long, long);
-long sawtoothWave(long, long, long, long);
-long negativeSawtoothWave(long, long, long, long);
-long squareWave(long, long, long, long);
-long sineWave(long, long, long, long);
-long cosineWave(long, long, long, long);
+long triangleWave(long, long, unsigned long, unsigned long);
+long sawtoothWave(long, long, unsigned long, unsigned long);
+long negativeSawtoothWave(long, long, unsigned long, unsigned long);
+long squareWave(long, long, unsigned long, unsigned long);
+long sineWave(long, long, unsigned long, unsigned long);
+long cosineWave(long, long, unsigned long, unsigned long);
 
 #endif
